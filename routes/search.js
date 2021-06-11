@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
     let artistData = {};
 
     await req.spotify.searchTracks(`track:${req.query.track}`)
-    .then(response1 = () => {
+    .then((response1 ) => {
         console.log('track', response1)
         console.log("track")
         if (response1.body.status === 200) {
@@ -17,7 +17,7 @@ router.get('/', async function(req, res, next) {
             // trackData = response.data;
         }
         req.spotify.searchArtist(`artist:${req.query.artist}`)
-        .then(response2  = () => {
+        .then((response2) => {
             console.log("Artist")
             let tracks = response1.body.tracks;
             let artist = response2.body
