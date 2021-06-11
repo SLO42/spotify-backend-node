@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
+var searchRouter = require('./routes/search')
 
 
 require('dotenv').config();
@@ -84,6 +85,7 @@ const ROUTES = {
 // routes after above middleware.
 app.use('/', indexRouter);
 app.use('/login', loginRouter)
+app.use('/search', searchRouter )
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
