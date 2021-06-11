@@ -4,15 +4,15 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
     console.log(req.data, req.body)
-    console.log(req.params.track)
-    console.log(req.params.artist)
+    console.log(req.params)
+    console.log(req.params)
+
     let trackData;
     let artistData;
 
     req.spotify.SearchTracks(`track:${req.params.track.name}`)
-    .then(response = () => {
-        console.log(response)
-        trackData = response;
+    .then((response) => {
+        
     })
     .catch(error = () => {
         console.error(error);
@@ -41,7 +41,8 @@ router.get('/', function(req, res, next) {
     // .catch((error) => {
 
     // })
-    res.send(trackData)
+    // if (trackData and artistData !== null or empty)
+    res.send(trackData, artistData)
 })
 
 module.exports = router;
