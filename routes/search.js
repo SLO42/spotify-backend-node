@@ -15,7 +15,7 @@ router.get('/', async function(req, res, next) {
             console.log("its 200")
             // trackData = response.data;
         }
-        res.status(200).send(response.data.body)
+        res.status(200).send(response.body)
     })
     .catch(error = () => {
         console.error(error);
