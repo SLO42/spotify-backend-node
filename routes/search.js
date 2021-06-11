@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
     console.log(req.track, "track")
     console.log(req.artist, "artist")
 
-    let trackData;
-    let artistData;
+    let trackData = {};
+    let artistData = {};
 
     req.spotify.SearchTracks(`track:${req.params.track.name}`)
     .then((response) => {
