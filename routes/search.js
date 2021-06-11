@@ -8,28 +8,28 @@ router.get('/', async function(req, res, next) {
     let trackData = {};
     let artistData = {};
 
-    await req.spotify.searchTracks(`track:${req.query.track}`)
+    req.spotify.searchTracks(`track:${req.query.track}`)
     .then((response) => {
         console.log(response)
-        if (response.status === 200) {
+        // if (response.status === 200) {
 
-            trackData = response.data
-        }
-        // res.status(200).send(response)
+        //     trackData = response.data
+        // }
+        res.status(200).send(response)
     })
     .catch(error = () => {
         console.error(error);
         res.status(408).send(error)
     })
     
-    await req.spotify.searchArtist(`artist:${req.query.artist}`)
+    req.spotify.searchArtist(`artist:${req.query.artist}`)
     .then((response) => {
         console.log(response)
-        if (response.status === 200) {
+        // if (response.status === 200) {
 
-            artistData = response.data
-        }
-        // res.status(200).send(response)
+        //     artistData = response.data
+        // }
+        res.status(200).send(response)
     })
     .catch(error = () => {
         console.error(error);
