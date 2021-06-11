@@ -11,11 +11,11 @@ router.get('/', async function(req, res, next) {
     await req.spotify.searchTracks(`track:${req.query.track}`)
     .then((response) => {
         console.log('track', response)
-        if (response.status === 200) {
+        if (response) {
             console.log("its 200")
             // trackData = response.data;
         }
-        res.status(200).send(response)
+        res.status(200).send(response.data.body)
     })
     .catch(error = () => {
         console.error(error);
