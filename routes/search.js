@@ -9,10 +9,10 @@ router.get('/', function(req, res, next) {
     let trackData;
     let artistData;
 
-    trackData = req.spotify.SearchTracks(`track:${req.params.track.name}`)
+    req.spotify.SearchTracks(`track:${req.params.track.name}`)
     .then(response = () => {
         console.log(response)
-        return response;
+        trackData = response;
     })
     .catch(error = () => {
         console.error(error);
