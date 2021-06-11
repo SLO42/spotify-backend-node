@@ -4,8 +4,8 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
     console.log(req.data, req.body)
-    console.log(req.params)
-    console.log(req.params)
+    console.log(req.track)
+    console.log(req.artist)
 
     let trackData;
     let artistData;
