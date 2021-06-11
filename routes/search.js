@@ -5,18 +5,19 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     console.log(req, "req")
     console.log(req.query, "params")
-    console.log(req.track, "track")
-    console.log(req.artist, "artist")
 
     let trackData = {};
     let artistData = {};
 
-    req.spotify.SearchTracks(`track:${req.params.track.name}`)
+    req.spotify.SearchTracks(`track:${req.query.track}`)
     .then((response) => {
-        
+        console.log(response)
+        // trackData = response.data
+        res.send(response)
     })
     .catch(error = () => {
         console.error(error);
+        res.send(error)
     })
     // req.spotify.SearchTracks(`track:${req.params.track.name}`)
     // .then(response = () => {
@@ -43,7 +44,7 @@ router.get('/', function(req, res, next) {
 
     // })
     // if (trackData and artistData !== null or empty)
-    res.send(trackData, artistData)
+    // res.send(trackData, artistData)
 })
 
 module.exports = router;
