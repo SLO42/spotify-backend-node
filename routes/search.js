@@ -8,12 +8,12 @@ router.get('/', async function(req, res, next) {
     let trackData = {};
     let artistData = {};
 
-    trackData = await req.spotify.searchTracks(`track:${req.query.track}`)
+    await req.spotify.searchTracks(`track:${req.query.track}`)
     .then((response) => {
         console.log('track', response)
         if (response.status === 200) {
 
-            return response.data;
+            trackData = response.data;
         }
         // res.status(200).send(response)
     })
