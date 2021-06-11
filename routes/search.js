@@ -1,5 +1,4 @@
 var express = require('express');
-const { response } = require('../app');
 var router = express.Router();
 
 router.get('/', async function(req, res, next) {
