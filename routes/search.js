@@ -11,39 +11,38 @@ router.get('/', async function(req, res, next) {
     await req.spotify.searchTracks(`track:${req.query.track}`)
     .then((response) => {
         console.log(response)
-        // trackData = response.data
-        res.status(200).send(response)
+        if (response.status === 200) {
+
+            trackData = response.data
+        }
+        // res.status(200).send(response)
     })
     .catch(error = () => {
         console.error(error);
         res.status(408).send(error)
     })
-    // req.spotify.SearchTracks(`track:${req.params.track.name}`)
-    // .then(response = () => {
-    //     req.spotify.SearchArtists(`artist:${req.params.artist.name}`)
-    //     .then(response = () => {
+    
+    await req.spotify.searchArtist(`artist:${req.query.artist}`)
+    .then((response) => {
+        console.log(response)
+        if (response.status === 200) {
 
-    //     })
-    // })
-    // .catch(error = () => {
-    //     console.log(error)
-    // })
+            artistData = response.data
+        }
+        // res.status(200).send(response)
+    })
+    .catch(error = () => {
+        console.error(error);
+        res.status(408).send(error)
+    })
 
 
-    // req.spotify.SearchTracks(`track:${req.params.track.name}`)
-    // .then((responseOne) => {
-    //     req.spotify.SearchArtists(`artist:${req.params.artist.name}`)
-    //     .then((responseTwo) => {
-
-    //     })
-    //     .catch((error))
-
-    // })
-    // .catch((error) => {
 
     // })
     // if (trackData and artistData !== null or empty)
-    // res.send(trackData, artistData)
+    console.log(trackData)
+    console.log(artistData)
+    res.send(trackData, artistData)
 })
 
 module.exports = router;
