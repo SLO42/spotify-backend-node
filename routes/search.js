@@ -2,22 +2,22 @@ var express = require('express');
 const { response } = require('../app');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
     console.log(req, "req")
     console.log(req.query, "params")
 
     let trackData = {};
     let artistData = {};
 
-    req.spotify.SearchTracks(`track:${req.query.track}`)
+    await req.spotify.SearchTracks(`track:${req.query.track}`)
     .then((response) => {
         console.log(response)
         // trackData = response.data
-        res.send(response)
+        res.status(200).send(response)
     })
     .catch(error = () => {
         console.error(error);
-        res.send(error)
+        res.status(408).send(error)
     })
     // req.spotify.SearchTracks(`track:${req.params.track.name}`)
     // .then(response = () => {
