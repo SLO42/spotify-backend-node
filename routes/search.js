@@ -12,10 +12,10 @@ router.get('/', async function(req, res, next) {
     .then((response) => {
         console.log('track', response)
         if (response.status === 200) {
-            console.log(response.body)
-            trackData = response.data;
+            console.log("its 200")
+            // trackData = response.data;
         }
-        // res.status(200).send(response)
+        res.status(200).send(response)
     })
     .catch(error = () => {
         console.error(error);
@@ -43,7 +43,7 @@ router.get('/', async function(req, res, next) {
     // if (trackData and artistData !== null or empty)
     console.log('trackData', trackData)
     // console.log('artistData', artistData)
-    res.send(trackData)
+    // res.send(trackData)
 })
 
 module.exports = router;
