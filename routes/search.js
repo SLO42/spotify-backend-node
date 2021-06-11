@@ -3,7 +3,7 @@ const { response } = require('../app');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    console.log(req.data, req.body)
+    console.log(req, "req")
     console.log(req.params, "params")
     console.log(req.track, "track")
     console.log(req.artist, "artist")
