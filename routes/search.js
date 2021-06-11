@@ -17,16 +17,17 @@ router.get('/', async function(req, res, next) {
             // trackData = response.data;
         }
         let tracks = response1.body.tracks;
-        req.spotify.searchArtist(`artist:${req.query.artist}`)
-        .then((response2) => {
-            console.log("Artist")
-            let artist = response2.body
-            res.status(200).send({tracks: tracks, artist: artist })
-        })
-        .catch(error = () => {
-            console.error(error);
-            // res.status(408).send(error)
-        })
+        res.status(200).send({tracks: tracks})
+        // req.spotify.searchArtist(`artist:${req.query.artist}`)
+        // .then((response2) => {
+        //     console.log("Artist")
+        //     let artist = response2.body
+        //     res.status(200).send({tracks: tracks, artist: artist })
+        // })
+        // .catch(error = () => {
+        //     console.error(error);
+        //     // res.status(408).send(error)
+        // })
     })
     .catch(error = () => {
         console.error(error);
