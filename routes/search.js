@@ -8,7 +8,7 @@ router.get('/', async function(req, res, next) {
     let trackData = {};
     let artistData = {};
 
-    await req.spotify.SearchTracks(`track:${req.query.track}`)
+    await req.spotify.searchTracks(`track:${req.query.track}`)
     .then((response) => {
         console.log(response)
         // trackData = response.data
