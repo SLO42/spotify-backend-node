@@ -12,7 +12,7 @@ router.get('/', async function(req, res, next) {
     .then((response) => {
         console.log('track', response)
         if (response.status === 200) {
-
+            console.log(response.body)
             trackData = response.data;
         }
         // res.status(200).send(response)
