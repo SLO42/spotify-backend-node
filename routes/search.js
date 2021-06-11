@@ -10,12 +10,12 @@ router.get('/', async function(req, res, next) {
 
     req.spotify.searchTracks(`track:${req.query.track}`)
     .then((response) => {
-        console.log(response)
-        // if (response.status === 200) {
+        console.log('track', response)
+        if (response.status === 200) {
 
-        //     trackData = response.data
-        // }
-        res.status(200).send(response)
+            trackData = response.data
+        }
+        // res.status(200).send(response)
     })
     .catch(error = () => {
         console.error(error);
@@ -24,12 +24,12 @@ router.get('/', async function(req, res, next) {
     
     req.spotify.searchArtist(`artist:${req.query.artist}`)
     .then((response) => {
-        console.log(response)
-        // if (response.status === 200) {
+        console.log('artist', response)
+        if (response.status === 200) {
 
-        //     artistData = response.data
-        // }
-        res.status(200).send(response)
+            artistData = response.data
+        }
+        // res.status(200).send(response)
     })
     .catch(error = () => {
         console.error(error);
@@ -40,8 +40,8 @@ router.get('/', async function(req, res, next) {
 
     // })
     // if (trackData and artistData !== null or empty)
-    console.log(trackData)
-    console.log(artistData)
+    console.log('trackData', trackData)
+    console.log('artistData', artistData)
     res.send(trackData, artistData)
 })
 
