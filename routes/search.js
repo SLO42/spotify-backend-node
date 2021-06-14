@@ -8,32 +8,28 @@ router.get('/', async function(req, res, next) {
     let trackData = {};
     let artistData = {};
 
-    await req.spotify.searchTracks(`track:${req.query.track}`)
-    .then((response1 ) => {
-        console.log('track', response1)
-        console.log("track")
-        if (response1.body.status === 200) {
-            console.log("its 200")
-            // trackData = response.data;
-        }
-        let tracks = response1.body.tracks.items;
-        res.status(200).send({tracks: tracks})
-        // req.spotify.searchArtist(`artist:${req.query.artist}`)
-        // .then((response2) => {
-        //     console.log("Artist")
-        //     let artist = response2.body
-        //     res.status(200).send({tracks: tracks, artist: artist })
-        // })
-        // .catch(error = () => {
-        //     console.error(error);
-        //     // res.status(408).send(error)
-        // })
+    const tracks = await req.spotify.searchTracks(`track:${req.query.track}`)
+    .then( async (response1 ) => {
+        console.log('t - start', response1, "t - end")
+        return response1.body.tracks.items;
+        // res.status(200).send({tracks: tracks})
     })
     .catch(error = () => {
         console.error(error);
-        // res.status(408).send(error)
+        res.status(408).send(error)
         return null;
     })
+    const artist = await req.spotify.searchArtists(`artist:${req.query.artist}`)
+    .then((response2) => {
+        console.log("Artist - Start", response2, "Artist - End")
+        return response2.body
+        // res.status(200).send([tracks, artist])
+    })
+    .catch(error = () => {
+        console.error(error);
+        res.status(408).send(error)
+    })
+    res.status(200).send([tracks, artist])
     
     // req.spotify.searchArtist(`artist:${req.query.artist}`)
     // .then((response) => {
@@ -53,7 +49,7 @@ router.get('/', async function(req, res, next) {
 
     // })
     // if (trackData and artistData !== null or empty)
-    console.log('trackData', trackData)
+    // console.log('trackData', trackData)
     // console.log('artistData', artistData)
     // res.send(trackData)
 })
