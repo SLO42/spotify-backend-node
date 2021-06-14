@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
             console.log("its 200")
             // trackData = response.data;
         }
-        let tracks = response1.body.tracks;
+        let tracks = response1.body.tracks.items;
         res.status(200).send({tracks: tracks})
         // req.spotify.searchArtist(`artist:${req.query.artist}`)
         // .then((response2) => {
