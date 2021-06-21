@@ -6,6 +6,8 @@ const ROUTES = {
   '/': 'Home Page',
   '/login': 'login route using Spotify 20Auth',
   '/search': 'Search for track or artist',
+  '/genres': 'Genre seeds',
+  '/recommendation': 'Song recommendation based on seeds',
 };
 
 

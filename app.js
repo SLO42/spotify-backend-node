@@ -8,6 +8,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var searchRouter = require('./routes/search')
+var genresRouter = require('./routes/genres')
+var recRouter = require('./routes/recommendation')
 
 
 require('dotenv').config();
@@ -81,12 +83,16 @@ const ROUTES = {
   '/': 'Home Page',
   '/login': 'login route using Spotify 20Auth',
   '/search': 'Search for track or artist',
+  '/genres': 'Genre seeds',
+  '/recommendation': 'Song recommendation based on seeds',
 };
 
 // routes after above middleware.
 app.use('/', indexRouter);
 app.use('/login', loginRouter)
 app.use('/search', searchRouter )
+app.use('/genres', genresRouter)
+app.use('/recommendation', recRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
